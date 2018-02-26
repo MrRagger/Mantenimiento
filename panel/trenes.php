@@ -88,7 +88,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr onclick="window.location='tren.php?id=1';">
                 <td>#</td>
                 <td>#</td>
                 <td>#</td>
