@@ -1,5 +1,15 @@
 <!doctype html>
-<html lang="en">
+<?php
+require('Conexion.php');
+$conexion = Conexion::conectar();
+$matricula = $_GET["matricula"];
+$sql = 'SELECT `Matricula`, `Tipo`, `Capacidad`, `NCoches`, `Operativo`, `Localizacion`, `KM` FROM Tren WHERE Matricula = "'.$matricula.'"';
+$resultado = $conexion->query($sql);
+$datos_tren = $resultado->fetch_assoc();
+$sql = 'SELECT Averia.IdAveria, Averia.Tipo, Averia.IdPieza, Pieza.Matricula from Averia, Pieza where Averia.IdPieza=Pieza.IdPieza and Pieza.Matricula = "'.$matricula.'"';
+$resultado = $conexion->query($sql);
+?>
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,7 +17,7 @@
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
 
-  <title>Tren</title>
+  <title>Panel de Mantenimiento</title>
 
   <!-- Bootstrap core CSS -->
   <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,248 +31,143 @@
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php">Tren</a>
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Desconectar</a>
+        <a class="nav-link" href="login.php">Desconectar</a>
       </li>
     </ul>
   </nav>
-  
-  <div class="imagen" style="display: inline-block; vertical-align:top;">
-  <img src="DT_Vagon.jpg" width="70%" height="70%">
-  </div>
-  <div class="detalles" style="display: inline-block; vertical-align:top;">
-  <table class="table table-striped table-sm">
-  <thead>
-              <tr>
-                <th>ID</th>
-                <th>Atributo</th>
-              </tr>
-            </thead>
-            <tbody>
-  <tr>
-  <td>Matricula</td>
-  <td>Numero matriucla</td>  
-  </tr>
-  
-  <tr>
-    <td>Capacidad</td>
-	<td>Tamaño</td>
-  </tr>
-  
-  <tr>
-    <td>Kilómetros</td>
-	<td>KM recorridos</td>
-  </tr>
-	
-	<tr>
-	  <td>Coches</td>
-	  <td>Numero coches</td>
-	  
-	</tr>
-	
-	<tr>
-	  <td>Tipo</td>
-	  <td>Tipo tren</td>
-	</tr>
-	
-	<tr>
-	  <td>Operativo</td>
-  <td>Si o no</td>
-  
-  </tr>
-<tr>
-  <td>Localización</td>
-  <td>Localización tren</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="index.php">
-                <span data-feather="home"></span>
-                Inicio <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file"></span>
-                Lista de trenes
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Categoría 1
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="users"></span>
-                Categoría 2
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Categoría 3
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Categoría 4
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">Incidencias de mantenimiento</h1>
-        </div>
-
-        <div class="table-responsive">
-          <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>#</th>
-                <th>#</th>
-                <th>#</th>
-                <th>#</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-                <td>#</td>
-              </tr>
-              <tr>
-                <td>1,002</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td>adipiscing</td>
-                <td>elit</td>
-              </tr>
-              <tr>
-                <td>1,003</td>
-                <td>Integer</td>
-                <td>nec</td>
-                <td>odio</td>
-                <td>Praesent</td>
-              </tr>
-              <tr>
-                <td>1,003</td>
-                <td>libero</td>
-                <td>Sed</td>
-                <td>cursus</td>
-                <td>ante</td>
-              </tr>
-              <tr>
-                <td>1,004</td>
-                <td>dapibus</td>
-                <td>diam</td>
-                <td>Sed</td>
-                <td>nisi</td>
-              </tr>
-              <tr>
-                <td>1,005</td>
-                <td>Nulla</td>
-                <td>quis</td>
-                <td>sem</td>
-                <td>at</td>
-              </tr>
-              <tr>
-                <td>1,006</td>
-                <td>nibh</td>
-                <td>elementum</td>
-                <td>imperdiet</td>
-                <td>Duis</td>
-              </tr>
-              <tr>
-                <td>1,007</td>
-                <td>sagittis</td>
-                <td>ipsum</td>
-                <td>Praesent</td>
-                <td>mauris</td>
-              </tr>
-              <tr>
-                <td>1,008</td>
-                <td>Fusce</td>
-                <td>nec</td>
-                <td>tellus</td>
-                <td>sed</td>
-              </tr>
-              <tr>
-                <td>1,009</td>
-                <td>augue</td>
-                <td>semper</td>
-                <td>porta</td>
-                <td>Mauris</td>
-              </tr>
-              <tr>
-                <td>1,010</td>
-                <td>massa</td>
-                <td>Vestibulum</td>
-                <td>lacinia</td>
-                <td>arcu</td>
-              </tr>
-              <tr>
-                <td>1,011</td>
-                <td>eget</td>
-                <td>nulla</td>
-                <td>Class</td>
-                <td>aptent</td>
-              </tr>
-              <tr>
-                <td>1,012</td>
-                <td>taciti</td>
-                <td>sociosqu</td>
-                <td>ad</td>
-                <td>litora</td>
-              </tr>
-              <tr>
-                <td>1,013</td>
-                <td>torquent</td>
-                <td>per</td>
-                <td>conubia</td>
-                <td>nostra</td>
-              </tr>
-              <tr>
-                <td>1,014</td>
-                <td>per</td>
-                <td>inceptos</td>
-                <td>himenaeos</td>
-                <td>Curabitur</td>
-              </tr>
-              <tr>
-                <td>1,015</td>
-                <td>sodales</td>
-                <td>ligula</td>
-                <td>in</td>
-                <td>libero</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </main>
+<div class="superior" style="margin-left: 250px;">
+    <div class="imagen" style="display: inline-block; vertical-align:top;width:60%;margin-top: 50px">
+      <img src="DT_Vagon.jpg" height="70%" width="100%">
     </div>
+    <div class="detalles" style="display: inline-block; vertical-align:top;margin-left: 200px;margin-top: 20px">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Atributo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Matrícula</td>
+            <td><?php echo $matricula ?></td>  
+          </tr>
+
+          <tr>
+            <td>Capacidad</td>
+            <td><?php echo $datos_tren["Capacidad"] ?></td>
+          </tr>
+
+          <tr>
+            <td>Kilómetros</td>
+            <td><?php echo $datos_tren["KM"] ?></td>
+          </tr>
+
+          <tr>
+           <td>Coches</td>
+           <td><?php echo $datos_tren["NCoches"] ?></td>
+
+         </tr>
+
+         <tr>
+           <td>Tipo</td>
+           <td><?php echo $datos_tren["Tipo"] ?></td>
+         </tr>
+
+         <tr>
+           <td>Operativo</td>
+           <td><?php if($datos_tren["Operativo"]==1){echo "Sí";} else {echo "No";} ?></td>
+
+         </tr>
+         <tr>
+          <td>Localización</td>
+          <td><?php echo $datos_tren["Localizacion"] ?></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.php">
+              <span data-feather="home"></span>
+              Inicio <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trenes.php">
+              <span data-feather="file"></span>
+              Lista de trenes
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart"></span>
+              Categoría 1
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="users"></span>
+              Categoría 2
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="bar-chart-2"></span>
+              Categoría 3
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="layers"></span>
+              Categoría 4
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Incidencias de mantenimiento</h1>
+        <button type="button" class="btn btn-primary">Añadir incidencia</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Tipo de avería</th>
+              <th>Gravedad</th>
+              <th>Pieza afectada</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php
+          while($fila = mysqli_fetch_array($resultado)) {
+          $tipo = $fila['IdAveria'];
+          $gravedad = $fila['Tipo'];
+          $pieza = $fila['IdPieza'];
+          echo "<tr><td>".$tipo."</td><td>".$gravedad."</td><td>".$pieza."</td></tr>";
+          }?> 
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
 
     <!-- Bootstrap core JavaScript
       ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
-crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
       <script src="assets/js/vendor/popper.min.js"></script>
       <script src="dist/js/bootstrap.min.js"></script>
