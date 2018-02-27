@@ -8,7 +8,7 @@ require('cTren.php');
 
 ?>
 
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +30,7 @@ require('cTren.php');
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.php">Mantenimiento</a>
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Desconectar</a>
+        <a class="nav-link" href="login.php">Desconectar</a>
       </li>
     </ul>
   </nav>
@@ -106,7 +106,7 @@ require('cTren.php');
 			
 			foreach($trenesitos as $x){ ?>
 		
-		<tr>
+		<tr onclick="window.location='tren.php?matricula=<?php echo $x->Matricula; ?>';">
 		
 		<td><?php echo $x->Matricula; ?></td>
 		<td><?php echo $x->Tipo; ?></td>
