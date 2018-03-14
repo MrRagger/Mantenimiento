@@ -6,8 +6,13 @@ $matricula = $_GET["matricula"];
 $sql = 'SELECT `Matricula`, `Tipo`, `Capacidad`, `NCoches`, `Operativo`, `Localizacion`, `KM` FROM Tren WHERE Matricula = "'.$matricula.'"';
 $resultado = $conexion->query($sql);
 $datos_tren = $resultado->fetch_assoc();
-$sql = 'SELECT Averia.IdAveria, Averia.Tipo, Averia.IdPieza, Pieza.Matricula from Averia, Pieza where Averia.IdPieza=Pieza.IdPieza and Pieza.Matricula = "'.$matricula.'"';
-$resultado = $conexion->query($sql);
+$sql = 'SELECT Pieza.Matricula, Averia.IdAveriaFiltroAire,Averia.IdFiltroAire,Averia.TipoAveriaFiltro, Averia.DescripcionFiltro
+		from Averia, Pieza where Averia.IdFiltroAire=Pieza.IdFiltroAire and Pieza.Matricula="'.$matricula.'"';
+$sql_2 = 'SELECT Pieza.Matricula, Averia.IdAveriaValvulaAire,
+		Averia.IdPiezaValvulaAire,Averia.TipoAveriaValvula,Averia.DescripcionValvula
+		from Averia, Pieza where Averia.IdPiezaValvulaAire=Pieza.IdPiezaValvulaAire and Pieza.Matricula="'.$matricula.'"';
+$resultado_valvula = $conexion->query($sql_2);
+$resultado_filtro = $conexion->query($sql);
 ?>
 <html lang="es">
 <head>
@@ -136,7 +141,7 @@ $resultado = $conexion->query($sql);
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">Incidencias de mantenimiento</h1>
-        <button type="button" class="btn btn-primary">Añadir incidencia</button>
+        <a class="btn btn-primary" href="anadir-incidencia.php?matricula=<?php echo $matricula; ?>" role="button">Añadir incidencia</a>
       </div>
 
       <div class="table-responsive">
@@ -146,15 +151,28 @@ $resultado = $conexion->query($sql);
               <th>Tipo de avería</th>
               <th>Gravedad</th>
               <th>Pieza afectada</th>
+              <th>Descripción</th>
             </tr>
           </thead>
           <tbody>
           <?php
-          while($fila = mysqli_fetch_array($resultado)) {
-          $tipo = $fila['IdAveria'];
-          $gravedad = $fila['Tipo'];
-          $pieza = $fila['IdPieza'];
-          echo "<tr><td>".$tipo."</td><td>".$gravedad."</td><td>".$pieza."</td></tr>";
+          while($fila = mysqli_fetch_array($resultado_filtro )) {
+          if($fila['IdAveriaFiltroAire'] != "NULL"){
+          	$tipo = $fila['IdAveriaFiltroAire'];
+          $gravedad = $fila['TipoAveriaFiltro'];
+          $pieza = $fila['IdFiltroAire'];
+          $descripcion = $fila['DescripcionFiltro'];
+          echo "<tr><td>".$tipo."</td><td>".$gravedad."</td><td>".$pieza."</td><td>".$descripcion."</tr>";
+          }
+          }
+          while($fila = mysqli_fetch_array($resultado_valvula)) {
+          if($fila['IdAveriaValvulaAire'] != "NULL"){
+          	$tipo = $fila['IdAveriaValvulaAire'];
+          $gravedad = $fila['TipoAveriaValvula'];
+          $pieza = $fila['IdPiezaValvulaAire'];
+          $descripcion = $fila['DescripcionValvula'];
+          echo "<tr><td>".$tipo."</td><td>".$gravedad."</td><td>".$pieza."</td><td>".$descripcion."</tr>";
+          }
           }?> 
           </tbody>
         </table>

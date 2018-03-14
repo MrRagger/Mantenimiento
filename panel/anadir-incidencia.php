@@ -4,8 +4,10 @@
 require('Conexion.php');
 $conexion = Conexion::conectar();
 require('cTren.php');
-
-
+$matricula = $_GET["matricula"];
+$sql = "SELECT * from Pieza;";
+$resultado = $conexion->query($sql);
+echo mysqli_error($conexion);
 ?>
 
 <html lang="es">
@@ -47,7 +49,7 @@ require('cTren.php');
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="trenes.php">
                 <span data-feather="file"></span>
                 Lista de trenes
               </a>
@@ -82,46 +84,44 @@ require('cTren.php');
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">Lista de trenes</h1>
+          <h1 class="h2">Añadir incidencia</h1>
         </div>
-
-        <div class="table-responsive">
-          <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th>Matricula</th>
-                <th>Tipo</th>
-                <th>Capacidad</th>
-                <th>NCoches</th>
-                <th>Operativo</th>
-				<th>Localizacion</th>
-				<th>KM</th>
-              </tr>
-            </thead>
-            <tbody>
-			
-			<?php
-	
-			$trenesitos = cTren::trenes();
-			
-			foreach($trenesitos as $x){ ?>
-		
-		<tr onclick="window.location='tren.php?matricula=<?php echo $x->Matricula; ?>';">
-		
-		<td><?php echo $x->Matricula; ?></td>
-		<td><?php echo $x->Tipo; ?></td>
-		<td><?php echo $x->Capacidad; ?></td>
-		<td><?php echo $x->NCoches; ?></td>
-		<td><?php echo $x->Operativo; ?></td>
-		<td><?php echo $x->Localizacion; ?></td>
-		<td><?php echo $x->KM; ?></td>
-		
-		
-	<?php } ?>
-              
-            </tbody>
-          </table>
-        </div>
+        <form action="input_incidencia.php" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Tipo de Avería</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Indica el tipo de avería">
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1">Gravedad</label>
+    <select class="form-control" id="exampleSelect1">
+      <option>Alta</option>
+      <option>Media</option>
+      <option>Bloqueante</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1">Pieza afectada</label>
+    <select class="form-control" name= "exampleSelect1" id="exampleSelect1">
+      <?php 
+      while($fila = mysqli_fetch_array($resultado)) { 
+        echo $fila[0].$fila[1].$fila[2].$fila[3].$fila[4];
+        if($fila[5] == $matricula) {
+          echo '<option>'.$fila[0].'</option>';
+          echo '<option>'.$fila[1].'</option>';
+          echo '<option>'.$fila[2].'</option>';
+          echo '<option>'.$fila[3].'</option>';
+          echo '<option>'.$fila[4].'</option>';
+        } 
+      }
+      ?>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Descripción</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Describe la avería">
+  </div>
+  <input type="submit" class="btn btn-primary" value="Añadir">
+</form>
       </main>
     </div>
   </div>
