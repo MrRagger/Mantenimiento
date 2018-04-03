@@ -5,9 +5,8 @@ require('Conexion.php');
 $conexion = Conexion::conectar();
 require('cTren.php');
 $matricula = $_GET["matricula"];
-$sql = "SELECT * from Pieza;";
+$sql = 'SELECT `IdPieza` FROM `Pieza` WHERE `Matricula` = "'.$matricula.'"';
 $resultado = $conexion->query($sql);
-echo mysqli_error($conexion);
 ?>
 
 <html lang="es">
@@ -86,14 +85,14 @@ echo mysqli_error($conexion);
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
           <h1 class="h2">Añadir incidencia</h1>
         </div>
-        <form action="input_incidencia.php" method="post">
+        <form action="input_incidencia.php?matricula=<?php echo $_GET['matricula']; ?>" method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">Tipo de Avería</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Indica el tipo de avería">
+    <input  class="form-control" name="tipo" id="exampleInputEmail1" placeholder="Indica el tipo de avería">
   </div>
   <div class="form-group">
     <label for="exampleSelect1">Gravedad</label>
-    <select class="form-control" id="exampleSelect1">
+    <select class="form-control" name ="gravedad" id="exampleSelect1">
       <option>Alta</option>
       <option>Media</option>
       <option>Bloqueante</option>
@@ -101,24 +100,17 @@ echo mysqli_error($conexion);
   </div>
   <div class="form-group">
     <label for="exampleSelect1">Pieza afectada</label>
-    <select class="form-control" name= "exampleSelect1" id="exampleSelect1">
+    <select class="form-control" name= "pieza_afectada" id="exampleSelect1">
       <?php 
       while($fila = mysqli_fetch_array($resultado)) { 
-        echo $fila[0].$fila[1].$fila[2].$fila[3].$fila[4];
-        if($fila[5] == $matricula) {
-          echo '<option>'.$fila[0].'</option>';
-          echo '<option>'.$fila[1].'</option>';
-          echo '<option>'.$fila[2].'</option>';
-          echo '<option>'.$fila[3].'</option>';
-          echo '<option>'.$fila[4].'</option>';
-        } 
+        echo '<option>'.$fila[0].'</option>';
       }
       ?>
     </select>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Descripción</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Describe la avería">
+    <input class="form-control" name="descripcion" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Describe la avería">
   </div>
   <input type="submit" class="btn btn-primary" value="Añadir">
 </form>

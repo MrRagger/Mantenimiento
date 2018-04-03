@@ -6,29 +6,41 @@ $matricula = $_GET["matricula"];
 $sql = 'SELECT `Matricula`, `Tipo`, `Capacidad`, `NCoches`, `Operativo`, `Localizacion`, `KM` FROM Tren WHERE Matricula = "'.$matricula.'"';
 $resultado = $conexion->query($sql);
 $datos_tren = $resultado->fetch_assoc();
-$sql = 'SELECT Pieza.Matricula, Averia.IdAveriaFiltroAire,Averia.IdFiltroAire,Averia.TipoAveriaFiltro, Averia.DescripcionFiltro
-		from Averia, Pieza where Averia.IdFiltroAire=Pieza.IdFiltroAire and Pieza.Matricula="'.$matricula.'"';
-$sql_2 = 'SELECT Pieza.Matricula, Averia.IdAveriaValvulaAire,
-		Averia.IdPiezaValvulaAire,Averia.TipoAveriaValvula,Averia.DescripcionValvula
-		from Averia, Pieza where Averia.IdPiezaValvulaAire=Pieza.IdPiezaValvulaAire and Pieza.Matricula="'.$matricula.'"';
-$resultado_valvula = $conexion->query($sql_2);
-$resultado_filtro = $conexion->query($sql);
+$sql = 'SELECT Averia.IdAveria, Averia.Tipo, Averia.IdPieza, Pieza.Matricula from Averia, Pieza where Averia.IdPieza=Pieza.IdPieza and Pieza.Matricula = "'.$matricula.'"';
+$resultado = $conexion->query($sql);
+
+$sql = 'SELECT Sensor.Color from Sensor, Pieza where Sensor.IdPieza=Pieza.IdPieza and Sensor.IdSensor="Humedad" and Pieza.Matricula = "'.$matricula.'"';
+$sensorH = $conexion->query($sql);
+$sensorH = $sensorH->fetch_assoc();
+//var_dump($sensorH) or die;
+$sql = 'SELECT Sensor.Color from Sensor, Pieza where Sensor.IdPieza=Pieza.IdPieza and Sensor.IdSensor="Presion" and Pieza.Matricula = "'.$matricula.'"';
+$sensorP = $conexion->query($sql);
+$sensorP = $sensorP->fetch_assoc();
+
 ?>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="favicon.ico">
+	<head>		
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="favicon.ico">
 
-  <title>Panel de Mantenimiento</title>
+	<title>Panel de Mantenimiento</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="dashboard.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="dashboard.css" rel="stylesheet">
+	<style>
+	#Vagon {
+		background-image: url(DT_Vagon_M.jpg);
+		background-position: left top;
+		background-repeat: no-repeat;
+		padding: 50px;
+		background-size: 808px 200px;
+	</style>
 </head>
 
 <body>
@@ -41,10 +53,31 @@ $resultado_filtro = $conexion->query($sql);
     </ul>
   </nav>
 <div class="superior" style="margin-left: 250px;">
-    <div class="imagen" style="display: inline-block; vertical-align:top;width:60%;margin-top: 50px">
+
+	<!-- <div class="imagen" style="display: inline-block; vertical-align:top;"> -->
+	<!-- <div class="imagen" style="background-image; treninline-block; vertical-align:top;">
+	<img src="DT_Vagon.jpg" width="70%" height="70%">
+	</div>
+	
+	<div style="background-image: tren">
+	<div><img id="sensor1" src="sensor- <php echo($sensor1) ?>"></div>
+	<img src="sensor-verde">
+	<img src="sensor-verde">
+	<img src="sensor-verde">
+	<img src="sensor-verde">
+	<img src="sensor-verde">
+	</div>
+	
+	
+    <div class="imagen" style="display:  inline-block; vertical-align:top;width:60%;margin-top: 50px">
       <img src="DT_Vagon.jpg" height="70%" width="100%">
-    </div>
-    <div class="detalles" style="display: inline-block; vertical-align:top;margin-left: 200px;margin-top: 20px">
+	  <img id = "sensor1" src = "Piloto_verde.png">
+    </div> -->
+	<div id="Vagon" >
+		<img  src = "<?php echo $sensorH['Color'] ?>.png" style= "margin-top:95px ;margin-left: 265px;"/> 
+		<img src = "<?php echo $sensorP['Color'] ?>.png" style= "margin-top:95px; margin-left: 105px;"/> 
+	</div>	
+    <div class="detalles" style="display: inline-block; vertical-align:top;margin-left: 900px;margin-top: -200px">
       <table class="table table-striped table-sm">
         <thead>
           <tr>
@@ -141,7 +174,7 @@ $resultado_filtro = $conexion->query($sql);
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">Incidencias de mantenimiento</h1>
-        <a class="btn btn-primary" href="anadir-incidencia.php?matricula=<?php echo $matricula; ?>" role="button">Añadir incidencia</a>
+        <a href="anadir-incidencia.php?matricula=<?php echo $matricula; ?>" class="btn btn-primary" role="button">Añadir incidencia</a>
       </div>
 
       <div class="table-responsive">
@@ -151,28 +184,15 @@ $resultado_filtro = $conexion->query($sql);
               <th>Tipo de avería</th>
               <th>Gravedad</th>
               <th>Pieza afectada</th>
-              <th>Descripción</th>
             </tr>
           </thead>
           <tbody>
           <?php
-          while($fila = mysqli_fetch_array($resultado_filtro )) {
-          if($fila['IdAveriaFiltroAire'] != "NULL"){
-          	$tipo = $fila['IdAveriaFiltroAire'];
-          $gravedad = $fila['TipoAveriaFiltro'];
-          $pieza = $fila['IdFiltroAire'];
-          $descripcion = $fila['DescripcionFiltro'];
-          echo "<tr><td>".$tipo."</td><td>".$gravedad."</td><td>".$pieza."</td><td>".$descripcion."</tr>";
-          }
-          }
-          while($fila = mysqli_fetch_array($resultado_valvula)) {
-          if($fila['IdAveriaValvulaAire'] != "NULL"){
-          	$tipo = $fila['IdAveriaValvulaAire'];
-          $gravedad = $fila['TipoAveriaValvula'];
-          $pieza = $fila['IdPiezaValvulaAire'];
-          $descripcion = $fila['DescripcionValvula'];
-          echo "<tr><td>".$tipo."</td><td>".$gravedad."</td><td>".$pieza."</td><td>".$descripcion."</tr>";
-          }
+          while($fila = mysqli_fetch_array($resultado)) {
+          $tipo = $fila['IdAveria'];
+          $gravedad = $fila['Tipo'];
+          $pieza = $fila['IdPieza'];
+          echo "<tr><td>".$tipo."</td><td>".$gravedad."</td><td>".$pieza."</td></tr>";
           }?> 
           </tbody>
         </table>
