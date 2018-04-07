@@ -1,0 +1,72 @@
+2018/04/07 21:06:49,347 [INFO] [main] DeviceClientConfig - DeviceClientConfig object is created successfully with IotHubName=Trenes, deviceID=myFirstJavaDevice , method name is <init> 
+2018/04/07 21:06:49,363 [INFO] [main] DeviceClient - DeviceClient object is created successfully, method name is <init> 
+2018/04/07 21:06:50,869 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:50,872 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 0c545fae-1cc7-47de-8be4-c95c7bd7d7e4 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:06:51,881 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:51,884 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid f8e9b488-076a-4589-9dfc-c18bdebbcd65 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:06:52,889 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:52,890 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid bfc98ec4-7624-4f8e-96aa-10483e88a4a0 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:06:53,898 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:53,899 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 655d98ad-c34f-4f80-bf97-bc9bd070c6df along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:06:54,907 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:54,908 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 81260a33-af5a-46ee-a4e3-ff925eec575b along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:06:55,918 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:55,919 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid c034777f-1c72-4740-9d9b-bb10cfa2c715 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:06:56,928 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:56,929 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 269aad8a-339a-4b2c-b734-52317d66fd6f along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:06:57,938 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:57,940 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 674531cd-27b3-49e6-a14c-c1d9b5444e4a along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:06:58,948 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:58,949 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid dc2e6e1c-c884-4998-9180-178c66f4afa9 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:06:59,957 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:06:59,958 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 2be38061-3d7c-4258-be73-b15062492b46 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:00,968 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:00,970 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 716f0cd1-bbce-42fc-ad9b-a2432fc34f65 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:01,979 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:01,981 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 6b3d06a0-4dee-439a-bcfb-28a31d6533c4 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:02,989 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:02,990 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 27b20793-0ab5-4205-862c-65b99afb52fa along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:03,998 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:03,999 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 85b20902-101a-42a4-a233-3ef0ddf59bf0 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:05,008 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:05,009 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 1a314881-e6e4-4f29-b2b7-e05d121cff77 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:06,019 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:06,020 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 6a48a983-04a3-42b2-978f-83a256168fa8 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:07,028 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:07,030 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 9edac1be-146c-4ad5-84ac-95253ef468b7 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:08,039 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:08,040 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 73283895-f552-4e79-a409-764f31d030c4 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:09,047 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:09,047 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 3462530a-ddec-46dc-860b-17559d0d81dd along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:10,056 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:10,057 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid ae15d90d-c086-4aa0-85de-ed43edee78d5 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:11,068 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:11,069 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 0b41ab6b-5e82-4730-b5c7-06ee23a828d5 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:12,077 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:12,078 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 2d5eda00-7db2-4612-9360-ed4114b24e66 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:13,087 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:13,087 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 41f8fa05-a0af-4f30-b39e-338c73a63f06 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:14,097 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:14,097 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 4a2c6adf-7f21-47de-bfe2-9bddd660f9ff along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:15,108 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:15,109 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 84b179c1-099d-4763-8846-57d53b9a4a1c along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:16,119 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:16,129 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 7de91e70-f47c-4147-ae94-aedeed50ed5c along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:17,135 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:17,135 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 207468b8-c9f4-4467-b0ae-277450b7fc74 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:18,136 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:18,136 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid d26e9502-708b-4f73-bb06-4c1f4ed6bb50 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:19,148 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:19,149 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 26796e05-9291-4630-a203-21d651f13025 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:20,157 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:20,158 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid b6173414-9125-48f9-8768-69a4341df9e1 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:21,166 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:21,167 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 4f5ee618-a11b-4844-b47b-d0c33f037cd1 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:22,178 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:22,183 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 7208d3bd-8fb2-4948-8f60-c257d793acbf along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:23,197 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:23,198 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 9e8e116e-8150-4b0e-b4f3-46495ed19187 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:24,207 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:24,209 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 9d5349cf-7435-44a7-af36-e911502d6001 along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
+2018/04/07 21:07:25,218 [INFO] [pool-2-thread-1] Message - Setting message property with name=temperatureAlert and value=false, method name is setProperty 
+2018/04/07 21:07:25,219 [INFO] [pool-2-thread-1] DeviceClient - Message with messageid 980efa25-ebc9-46da-8b48-e3338c48f7ad along with callback and callbackcontext is added to the queue, method name is sendEventAsync 
