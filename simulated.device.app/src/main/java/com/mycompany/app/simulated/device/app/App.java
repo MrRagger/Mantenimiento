@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
+import java.io.IOException;
 
 public class App 
 {
@@ -64,8 +65,8 @@ private static class EventCallback implements IotHubEventCallback {
   }
 }
 public static class MessageSender implements Runnable {
-    static double humedad=0;
-    static double temperatura=0;
+    static double humedad;
+    static double temperatura;
 	public static Sensor sensor=new Sensor(humedad,temperatura);  
   public void run()  {
     try {
@@ -108,25 +109,18 @@ public static class MessageSender implements Runnable {
   }
 }
 public static void main( String[] args ) throws IOException, URISyntaxException {
- // client = new DeviceClient(connString, protocol);
- // client.open();
+  client = new DeviceClient(connString, protocol);
+  client.open();
 
-	// MessageSender sender = new MessageSender();
+	 MessageSender sender = new MessageSender();
 
-  //ExecutorService executor = Executors.newFixedThreadPool(1);
-  //executor.execute(sender);
-
-  //System.out.println("Press ENTER to exit.");
-  //System.in.read();
-  //executor.shutdownNow();
-  //client.closeNow();
-  Algoritmo algoritmo=new Algoritmo();
-  try {
-	algoritmo.analizarDatos();
-} catch (SQLException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
+  ExecutorService executor = Executors.newFixedThreadPool(1);
+  executor.execute(sender);
+ System.out.println("Press ENTER to exit.");
+  System.in.read();
+  executor.shutdownNow();
+  client.closeNow();
   
+ 
 }
 }
