@@ -27,7 +27,8 @@ CREATE TABLE Sensor (
     ON UPDATE RESTRICT);
 
 CREATE TABLE Averia(
-	IdAveria VARCHAR(20),
+	IdAveria Int auto_increment,
+	Id VARCHAR(20),
     Tipo VARCHAR(20),
     IdPieza VARCHAR(200),
     Descripcion VARCHAR(1000),
@@ -35,6 +36,41 @@ CREATE TABLE Averia(
     FOREIGN KEY (IdPieza) REFERENCES Pieza(IdPieza)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT);
+    
+CREATE TABLE Empleado(
+	DNI VARCHAR(20),
+    Nombre VARCHAR(20),
+    Apellido1 VARCHAR(20),
+    Apellido2 VARCHAR (20),
+    Salario INT,
+    KM INT,
+    Foto BLOB,
+    Id_Categoria VARCHAR(30),
+    Id_Estacion_Base VARCHAR (30),
+    PRIMARY KEY (DNI));
+
+CREATE TABLE Tarea(
+	DNI VARCHAR(20),
+	Id Int auto_increment,
+    Descripcion VARCHAR(10000),
+    PRIMARY KEY (Id,DNI),
+    FOREIGN KEY (DNI) REFERENCES Empleado(DNI)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT);
+    
+
+INSERT INTO Empleado (DNI, Nombre, Apellido1, Apellido2, Salario, KM, Id_Categoria, Id_Estacion_Base) VALUES ('50896790J', 'Javier', 'Martín', 'Pérez', 1200, 20000, 'Maquinista','Madrid');
+INSERT INTO Empleado (DNI, Nombre, Apellido1, Apellido2, Salario, KM, Id_Categoria, Id_Estacion_Base) VALUES ('23349009K', 'María', 'Martínez', 'Alonso', 1000, 234900, 'Mecánico', 'Barcelona');
+INSERT INTO Empleado (DNI, Nombre, Apellido1, Apellido2, Salario, KM, Id_Categoria, Id_Estacion_Base) VALUES ('34803478M', 'Pedro', 'García','Rodríguez',1050 ,342893, 'Maquinista', 'Valencia');
+INSERT INTO Empleado (DNI, Nombre, Apellido1, Apellido2, Salario, KM, Id_Categoria, Id_Estacion_Base) VALUES ('34895398L', 'Miguel', 'Barroso', 'Jiménez', 1000, 348901, 'Mecánico', 'Bilbao');
+
+INSERT INTO Tarea (DNI,Descripcion) VALUES ('50896790J','Conducir');
+INSERT INTO Tarea (DNI,Descripcion) VALUES ('23349009K', 'Arreglar Filtro de Aire');
+INSERT INTO Tarea (DNI,Descripcion) VALUES ('34803478M','Conducir');
+INSERT INTO Tarea (DNI,Descripcion) VALUES ('34895398L','Arreglar Rodamiento');
+
+SELECT * from Tarea;
+SELECT * from Empleado;
     
 INSERT INTO Tren  VALUES ('A001ABC', 'Alta', 400, 10, False, 'Madrid', 200000);
 INSERT INTO Tren  VALUES ('A002DEF', 'Alta', 400, 10, True, 'Valencia', 185000);
@@ -60,68 +96,68 @@ INSERT INTO Tren VALUES ('L020BCD', 'Media', 300, 7, True, 'Bilbao',140230);
 /*Como identificador de piezas vamos a asignar el nombre de la pieza más la primera parte de la matrícula del tren 
 donde se encuentra esa pieza*/
 
-INSERT INTO Pieza VALUES('A001ABC','A001ValvulaAire','Motor');  
+INSERT INTO Pieza VALUES('A001ABC','A001Rodamiento','Motor');  
 INSERT INTO Pieza VALUES('A001ABC','A001FiltroAire','Cabina');  
-INSERT INTO Pieza VALUES('A002DEF','A002ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('A002DEF','A002Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('A002DEF','A002FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('A003GHI','A003ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('A003GHI','A003Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('A003GHI','A003FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('A004JKL','A004ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('A004JKL','A004Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('A004JKL','A004FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('A005MNO','A005ValvulaAire','Motor');
+INSERT INTO Pieza VALUES('A005MNO','A005Rodamiento','Motor');
 INSERT INTO Pieza VALUES('A005MNO','A005FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('A006PQR','A006ValvulaAire','Motor');  
+INSERT INTO Pieza VALUES('A006PQR','A006Rodamiento','Motor');  
 INSERT INTO Pieza VALUES('A006PQR','A006FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('A007STU','A007ValvulaAire','Motor');  
+INSERT INTO Pieza VALUES('A007STU','A007Rodamiento','Motor');  
 INSERT INTO Pieza VALUES('A007STU','A007FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('A008VWX','A008ValvulaAire','Motor');  
+INSERT INTO Pieza VALUES('A008VWX','A008Rodamiento','Motor');  
 INSERT INTO Pieza VALUES('A008VWX','A008FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('A009YZA','A009ValvulaAire','Motor');  
+INSERT INTO Pieza VALUES('A009YZA','A009Rodamiento','Motor');  
 INSERT INTO Pieza VALUES('A009YZA','A009FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('A010BCD','A010ValvulaAire','Motor');  
+INSERT INTO Pieza VALUES('A010BCD','A010Rodamiento','Motor');  
 INSERT INTO Pieza VALUES('A010BCD','A010FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L011ABC','L011ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('L011ABC','L011Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('L011ABC','L011FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L012DEF','L012ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('L012DEF','L012Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('L012DEF','L012FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L013GHI','L013ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('L013GHI','L013Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('L013GHI','L013FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L014JKL','L014ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('L014JKL','L014Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('L014JKL','L014FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L015MNO','L015ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('L015MNO','L015Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('L015MNO','L015FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L016PQR','L016ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('L016PQR','L016Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('L016PQR','L016FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L017STU','L017ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('L017STU','L017Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('L017STU','L017FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L018VWX','L018ValvulaAire','Motor');
+INSERT INTO Pieza VALUES('L018VWX','L018Rodamiento','Motor');
 INSERT INTO Pieza VALUES('L018VWX','L018FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L019YZA','L019ValvulaAire','Motor');  
+INSERT INTO Pieza VALUES('L019YZA','L019Rodamiento','Motor');  
 INSERT INTO Pieza VALUES('L019YZA','L019FiltroAire','Cabina');
-INSERT INTO Pieza VALUES('L020BCD','L020ValvulaAire','Motor'); 
+INSERT INTO Pieza VALUES('L020BCD','L020Rodamiento','Motor'); 
 INSERT INTO Pieza VALUES('L020BCD','L020FiltroAire','Cabina');  
  
-INSERT INTO Sensor VALUES ('A001ValvulaAire','Presion', 'rojo');
+INSERT INTO Sensor VALUES ('A001Rodamiento','Temperatura', 'rojo');
 INSERT INTO Sensor VALUES ('A001FiltroAire','Humedad', 'naranja');
-INSERT INTO Sensor VALUES ('A002ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('A003ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('A004ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('A005ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('A006ValvulaAire','Presion', 'rojo');
-INSERT INTO Sensor VALUES ('A007ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('A008ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('A009ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('A010ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L011ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L012ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L013ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L014ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L015ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L016ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L017ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L018ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L019ValvulaAire','Presion', 'verde');
-INSERT INTO Sensor VALUES ('L020ValvulaAire','Presion', 'verde');
+INSERT INTO Sensor VALUES ('A002Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('A003Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('A004Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('A005Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('A006Rodamiento','Temperatura', 'rojo');
+INSERT INTO Sensor VALUES ('A007Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('A008Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('A009Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('A010Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L011Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L012Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L013Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L014Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L015Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L016Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L017Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L018Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L019Rodamiento','Temperatura', 'verde');
+INSERT INTO Sensor VALUES ('L020Rodamiento','Temperatura', 'verde');
 INSERT INTO Sensor VALUES ('A002FiltroAire','Humedad', 'verde');
 INSERT INTO Sensor VALUES ('A003FiltroAire','Humedad', 'verde');
 INSERT INTO Sensor VALUES ('A004FiltroAire','Humedad', 'verde');
@@ -142,14 +178,18 @@ INSERT INTO Sensor VALUES ('L018FiltroAire','Humedad', 'verde');
 INSERT INTO Sensor VALUES ('L019FiltroAire','Humedad', 'rojo');
 INSERT INTO Sensor VALUES ('L020FiltroAire','Humedad', 'verde');
 
-INSERT INTO Averia VALUES('PotenciaBaja','Bloqueante','A001ValvulaAire','La potencia del tren bajó debido a la presión de sobrealimentación. El fallo podría estar en la válvula de admisión de aire');
-INSERT INTO Averia VALUES('HumedadBaja', 'Media','A001FiltroAire','Ha habido un leve descenso de la humedad en la cabina. No es una avería grave pero es conveniente arreglarla lo antes posible. Puede ser debido a un fallo en el filtro de aire');
-INSERT INTO Averia VALUES('HumedadAlta', 'Bloqueante', 'L019FiltroAire','Ha habido un gran aumento de la humedad en la cabina, de tal forma que puede dañar otras piezas del tren. Puede ser debido a un fallo en el filtro de aire');
-INSERT INTO Averia VALUES('PotenciaBaja', 'Alta', 'A006ValvulaAire','La potencia del tren bajó debido a la presión de sobrealimentación. El fallo podría estar en la válvula de admisión de aire');
-SELECT * from Tren;
+UPDATE Sensor SET Color='verde' WHERE IdSensor='Humedad' AND IdPieza='L020FiltroAire';
+
+Select * from Sensor;
+
+INSERT INTO Averia (Id,Tipo, IdPieza,Descripcion) VALUES('Temperatura_Muy_Alta','Bloqueante','A001Rodamiento','El sensor ha detectado un gran aumento de temperatura poniendo en peligro el funcionamiento del motor. Hay que revisarlo');
+INSERT INTO Averia (Id,Tipo, IdPieza,Descripcion)VALUES('Humedad_Baja', 'Media','A001FiltroAire','Ha habido un leve descenso de la humedad en la cabina. No es una avería grave pero es conveniente arreglarla lo antes posible. Puede ser debido a un fallo en el filtro de aire');
+INSERT INTO Averia (Id,Tipo, IdPieza,Descripcion)VALUES('Humedad_Alta', 'Bloqueante', 'L019FiltroAire','Ha habido un gran aumento de la humedad en la cabina, de tal forma que puede dañar otras piezas del tren. Puede ser debido a un fallo en el filtro de aire');
+INSERT INTO Averia (Id,Tipo, IdPieza,Descripcion)VALUES('Temperatura_Alta', 'Alta', 'A006Rodamiento','El sensor ha detectado un leve aumento de temperatura poniendo en peligro el funcionamiento del motor. Hay que revisarlo');
+/*SELECT * from Tren;*/
 
 
-
+/*La potencia del tren bajó debido a la presión de sobrealimentación. El fallo podría estar en la válvula de admisión de aire');*/
 /*SELECT * from Pieza where Pieza. Matricula= 'L019YZA';*/
 /*SELECT Averia.IdAveria,Averia.Descripcion, Averia.Tipo, Averia.IdPieza, Pieza.Matricula from Averia, Pieza where Averia.IdPieza=Pieza.IdPieza and Pieza.Matricula='L014JKL';
 */
@@ -176,4 +216,5 @@ SELECT idPieza from Pieza;*/
     FOREIGN KEY (Matricula) REFERENCES Tren(Matricula)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT);*/
-    
+/*select * from Sensor;
+select* from Averia;*/
